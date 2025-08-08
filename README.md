@@ -14,8 +14,8 @@ Implementations are done in **Python** and **C++** using **OpenCV**.
 ---
 
 ## 🛠 Technologies
-![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-17-blue?logo=cplusplus&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green?logo=opencv&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.1-green?logo=opencv&logoColor=white)
 
 ---
