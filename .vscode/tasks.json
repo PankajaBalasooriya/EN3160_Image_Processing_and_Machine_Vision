@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build OpenCV + MatplotlibCPP Project",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-fdiagnostics-color=always",
+                "-g",
+                "-std=c++17",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}",
+
+                // OpenCV include & libs
+                "-I/usr/local/include/opencv4",
+                "-L/usr/local/lib",
+                "-lopencv_core",
+                "-lopencv_imgproc",
+                "-lopencv_highgui",
+                "-lopencv_imgcodecs",
+
+                // matplotlib-cpp include (update path to where matplotlibcpp.h is stored)
+                "-I${workspaceFolder}/include",
+
+                // Python include (adjust python version if different)
+                "-I/usr/include/python3.10",
+
+                // Python lib (adjust version to match your system)
+                "-lpython3.10"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build OpenCV + matplotlibcpp C++ project"
+        },
+        {
+            "type": "shell",
+            "label": "Run OpenCV + MatplotlibCPP Project",
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "shared"
+            },
+            "dependsOn": "Build OpenCV + MatplotlibCPP Project"
+        }
+    ]
+}

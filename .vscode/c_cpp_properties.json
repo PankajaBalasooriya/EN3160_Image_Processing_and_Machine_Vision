@@ -1,0 +1,31 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/local/include/opencv4",
+                "/usr/local/include/opencv4/opencv2",
+                "/usr/include",
+                "/usr/local/include",
+
+                // matplotlib-cpp include (adjust this path to your location)
+                "${workspaceFolder}/include",
+
+                // Python include (adjust version to your system's Python)
+                "/usr/include/python3.10"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerArgs": [
+                "-I/usr/local/include/opencv4",
+                "-I${workspaceFolder}/include",
+                "-I/usr/include/python3.10"
+            ]
+        }
+    ],
+    "version": 4
+}
