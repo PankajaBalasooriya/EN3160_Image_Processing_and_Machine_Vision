@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
@@ -20,6 +20,10 @@
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{beramono} % optional: better monospace font
+\usepackage{subcaption} % Make sure you have this package loaded
+\usepackage{caption}
+
+\captionsetup{font=small} % Make all captions smaller
 
 
 
@@ -27,7 +31,7 @@
 
 \lstdefinestyle{pythonstyle}{
     language=Python,
-    basicstyle=\linespread{1.1}\ttfamily\footnotesize,
+    basicstyle=\linespread{1.1}\ttfamily\scriptsize,
     keywordstyle=\color{blue}\bfseries,
     commentstyle=\color{green!60!black}\itshape,
     stringstyle=\color{red},
@@ -41,15 +45,14 @@
     xleftmargin=1.5em,
     framexleftmargin=1.5em,
     morekeywords={
-        np, cv2, array, linspace, arange, reshape, dtype,
-        uint8, float32, float64, int32, int64,
+        np, cv, array, linspace, arange, reshape, dtype,
         zeros, ones, eye, mean, median, std, var,
         sum, max, min, clip, concatenate, hstack, vstack,
         imread, imshow, imwrite, cvtColor, COLOR_BGR2GRAY,
         GaussianBlur, filter2D, Sobel, Laplacian,
         bitwise_and, threshold, inRange, findContours,
         moments, boundingRect, rectangle, circle,
-        waitKey, destroyAllWindows
+        waitKey, destroyAllWindows, LUT, calcHist, power, merge, astype
     }
 }
 
@@ -139,9 +142,8 @@
 % \section{Introduction}
 % Brief overview of the assignment objectives focusing on intensity transformations, histogram operations, filtering techniques, and image enhancement methods. Implementation uses OpenCV with both Python and C++ where appropriate.
 
-\section{Question 1: Basic Intensity Transformation}
-\subsection{Implementation}
-A piecewise intensity transformation function was constructed by linearly interpolating between the control points $"c"$.
+\section*{Question 1: Basic Intensity Transformation}
+Piecewise intensity transformation function is constructed by linearly interpolating between the control points $"c"$.
 
 \begin{lstlisting}[style=pythonstyle]
 c = np.array([(50, 50), (50, 100), (150, 255), (150,150)])
@@ -158,75 +160,120 @@ transform = np.concatenate((transform, t4), axis=0).astype('uint8')
 transform = np.concatenate((transform, t5), axis=0).astype('uint8')
 \end{lstlisting}
 
-\subsection{Results}
+Applying the transformation. 
+\begin{lstlisting}[style=pythonstyle]
+img_emma_transformed = cv.LUT(img_emma, transform)
+\end{lstlisting}
+
+
+\subsection*{Results}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.45\textwidth}
-        % \fbox{\rule{0pt}{2in}\rule{2in}{0pt}}
+    \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\textwidth]{resources/emma_original.jpg}
         \caption{Original Image}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.45\textwidth}
-        %\fbox{\rule{0pt}{2in}\rule{2in}{0pt}}
+    \begin{subfigure}{0.3\textwidth}
         \includegraphics[width=\textwidth]{resources/emma_transformed.jpg}
         \caption{Transformed Image}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        Analysis of the transformation effects and visual changes observed.nalysis of the transformation effects and visual changes observed.
     \end{subfigure}
     \caption{Intensity transformation results}
 \end{figure}
 
-\subsection{Discussion}
-Analysis of the transformation effects and visual changes observed.
 
-\section{Question 2: Brain Image Enhancement}
-\subsection{White Matter Accentuation}
+% \subsection{Discussion}
+% Analysis of the transformation effects and visual changes observed.
+
+\section*{Question 2: Brain Image Enhancement}
+A histogram of the image is used to identify the intensity regions for the white matter and grey matter.
+
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \caption{Original}
+    \begin{subfigure}{0.48\textwidth}
+        \includegraphics[width=\textwidth]{resources/Brain_hist.jpeg}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
+    \begin{subfigure}{0.48\textwidth}
+        \begin{lstlisting}[style=pythonstyle]
+hist = cv.calcHist([img_brain], [0], None, [256], [0, 256])
+        \end{lstlisting}
+        Following intensity transformations are applied to the selected region from the histogram to enhance white matter and Grey matter regions of the brain. 
+        \vspace{3em}
+    \end{subfigure}
+\end{figure}
+
+        \begin{lstlisting}[style=pythonstyle]
+# White Matter Enhancement transformation
+c = np.array([(140, 0), (180, 180)])
+t1 = np.zeros(c[0, 0] + 1).astype('uint8')
+t2 = np.linspace(c[0, 0] + 1, c[1, 1], c[1, 0] - c[0, 0]).astype('uint8')
+t3 = np.zeros(256 - len(t1) - len(t2)).astype('uint8')
+intensity_transform_white_matter_lut = np.concatenate((t1, t2, t3), axis=0).astype('uint8')
+img_brain_white_matter = cv.LUT(img_brain, intensity_transform_white_matter_lut)
+        \end{lstlisting}
+
+        \begin{lstlisting}[style=pythonstyle]
+# Grey Matter Enhancement transformation
+c = np.array([(180, 0), (210, 210)])
+t1 = np.zeros(c[0, 0] + 1).astype('uint8')
+t2 = np.linspace(c[0, 0] + 1, c[1, 1], c[1, 0] - c[0, 0]).astype('uint8')
+t3 = np.zeros(256 - len(t1) - len(t2)).astype('uint8')
+intensity_transform_grey_matter_lut = np.concatenate((t1, t2, t3)).astype('uint8')
+img_brain_grey_matter = cv.LUT(img_brain, intensity_transform_grey_matter_lut)
+        \end{lstlisting}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.2\textwidth}
+        \includegraphics[width=\textwidth]{resources/whitematter_transformed_image.jpg}
         \caption{White Matter Enhanced}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \caption{Transformation Plot}
-    \end{subfigure}
-    \caption{White matter enhancement}
-\end{figure}
-
-\subsection{Gray Matter Accentuation}
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \caption{Original}
+    \begin{subfigure}{0.26\textwidth}
+        \includegraphics[width=\textwidth]{resources/Whitematter_transformation_curve.jpg}
+        \caption{White Matter Plot}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
+    \begin{subfigure}{0.2\textwidth}
+        \includegraphics[width=\textwidth]{resources/transformed_gray_matter.jpg}
         \caption{Gray Matter Enhanced}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \caption{Transformation Plot}
+    \begin{subfigure}{0.26\textwidth}
+        \includegraphics[width=\textwidth]{resources/transformation_curve_gray_matter.jpg}
+        \caption{Gray Matter Plot}
     \end{subfigure}
-    \caption{Gray matter enhancement}
+    \caption{White and Gray matter enhancement results and transformation curves}
 \end{figure}
 
-\section{Question 3: Gamma Correction}
-\subsection{L*a*b* Color Space Conversion}
-Explanation of color space conversion and gamma correction application.
 
-\subsection{Gamma Value Selection}
-Report the chosen $\gamma$ value and justification.
+\section*{Question 3: Gamma Correction}
+\subsubsection*{L*a*b* Color Space Conversion}
+\begin{lstlisting}[style=pythonstyle]
+img_lab = cv.cvtColor(img_bgr, cv.COLOR_BGR2Lab)
+L, a, b = cv.split(img_lab)
+\end{lstlisting}
+\subsubsection*{Applying $\gamma$ value correction}
+\begin{lstlisting}[style=pythonstyle]
+L_norm = L.astype(np.float32) / 255.0  
+# Apply gamma correction
+gamma = 0.5  # <1 brightens, >1 darkens
+L_gamma = np.power(L_norm, gamma)
+L_new = np.clip(L_gamma * 255.0, 0, 255).astype(np.uint8)
+# Merge and convert back to BGR
+img_lab_new = cv.merge((L_new, a, b))
+img_bgr_new = cv.cvtColor(img_lab_new, cv.COLOR_Lab2BGR)
+\end{lstlisting}
+\subsubsection*{Gamma Value Selection}
+$\gamma$ value is chosen as 0.5 by comparing the image for each $\gamma$ value.
 
-\subsection{Histogram Analysis}
+\subsubsection*{Histogram Analysis}
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.45\textwidth}
