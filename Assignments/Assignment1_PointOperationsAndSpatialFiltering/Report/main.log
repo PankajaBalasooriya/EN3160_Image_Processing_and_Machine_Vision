@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.5)  9 AUG 2025 10:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.6.5)  13 AUG 2025 00:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -9,8 +9,8 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
 (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
-(C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
-File: size12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+(C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
+File: size11.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count188
 \c@section=\count189
@@ -379,27 +379,49 @@ Package: beramono 2004/01/31 (WaS)
 File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count308
 \l__pdf_internal_box=\box61
-) (main.aux)
+) (main.aux
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+
+LaTeX Warning: Label `fig:placeholder' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
  (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count309
@@ -449,12 +471,12 @@ Package caption Info: End \AtBeginDocument code.
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=44.0pt
+* \marginparwidth=59.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -465,133 +487,271 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count315
-Package hyperref Info: Link coloring OFF on input line 102.
+Package hyperref Info: Link coloring OFF on input line 106.
 (main.out) (main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<resources/University_of_Moratuwa_logo.png, id=139, 307.1475pt x 326.21875pt>
-File: resources/University_of_Moratuwa_logo.png Graphic file (type png)
-<use resources/University_of_Moratuwa_logo.png>
-Package pdftex.def Info: resources/University_of_Moratuwa_logo.png  used on input line 115.
-(pdftex.def)             Requested size: 227.62206pt x 241.75647pt.
- [1
-
-{C:/Users/PANKAJA/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./resources/University_of_Moratuwa_logo.png>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 144.
+<resources/github-mark.png, id=8, 562.1pt x 562.1pt>
+File: resources/github-mark.png Graphic file (type png)
+<use resources/github-mark.png>
+Package pdftex.def Info: resources/github-mark.png  used on input line 117.
+(pdftex.def)             Requested size: 9.10683pt x 9.10013pt.
+LaTeX Font Info:    Trying to load font information for T1+fvm on input line 117.
+ (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/bera\t1fvm.fd
+File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
+)
+LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
+(Font)              scaled to size 9.85492pt on input line 117.
+<resources/jupyter-icon.png, id=10, 1204.5pt x 1396.21625pt>
+File: resources/jupyter-icon.png Graphic file (type png)
+<use resources/jupyter-icon.png>
+Package pdftex.def Info: resources/jupyter-icon.png  used on input line 123.
+(pdftex.def)             Requested size: 9.10683pt x 10.54573pt.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 174.
  (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 144.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 174.
  (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2024/03/11 1.10a listings language file
 )
-LaTeX Font Info:    Trying to load font information for T1+fvm on input line 146.
- (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/bera\t1fvm.fd
-File: t1fvm.fd 2004/09/07 scalable font definitions for T1/fvm.
-)
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 146.
-LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 8.99994pt on input line 146.
+(Font)              scaled to size 5.39996pt on input line 176.
 LaTeX Font Info:    Font shape `T1/fvm/b/n' will be
-(Font)              scaled to size 8.99994pt on input line 147.
-<resources/emma_original.jpg, id=152, 722.7pt x 813.0375pt>
+(Font)              scaled to size 5.39996pt on input line 177.
+<resources/emma_original.jpg, id=12, 722.7pt x 813.0375pt>
 File: resources/emma_original.jpg Graphic file (type jpg)
 <use resources/emma_original.jpg>
-Package pdftex.def Info: resources/emma_original.jpg  used on input line 166.
-(pdftex.def)             Requested size: 204.85846pt x 230.46509pt.
-<resources/emma_transformed.jpg, id=153, 722.7pt x 813.0375pt>
+Package pdftex.def Info: resources/emma_original.jpg  used on input line 196.
+(pdftex.def)             Requested size: 136.57462pt x 153.64752pt.
+<resources/emma_transformed.jpg, id=13, 722.7pt x 813.0375pt>
 File: resources/emma_transformed.jpg Graphic file (type jpg)
 <use resources/emma_transformed.jpg>
-Package pdftex.def Info: resources/emma_transformed.jpg  used on input line 172.
-(pdftex.def)             Requested size: 204.85846pt x 230.46509pt.
+Package pdftex.def Info: resources/emma_transformed.jpg  used on input line 201.
+(pdftex.def)             Requested size: 136.57462pt x 153.64752pt.
 
+Underfull \hbox (badness 3449) in paragraph at lines 206--207
+\T1/cmr/m/n/10.95 sult in high con-trast re-
+ []
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.201 
-       [1{C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./resources/emma_original.jpg> <./resources/emma_transformed.jpg>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[2]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[3]
-LaTeX Font Info:    Font shape `T1/fvm/m/it' in size <10> not available
-(Font)              Font shape `T1/fvm/m/sl' tried instead on input line 283.
+LaTeX Font Info:    Font shape `T1/fvm/m/it' in size <6> not available
+(Font)              Font shape `T1/fvm/m/sl' tried instead on input line 235.
 LaTeX Font Info:    Font shape `T1/fvm/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 283.
- (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/03/11 1.10a listings language file
-) (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
-File: lstlang1.sty 2024/03/11 1.10a listings language file
-) (C:\Users\PANKAJA\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
-File: lstmisc.sty 2024/03/11 1.10a (Carsten Heinz)
-)
+(Font)              scaled to size 5.39996pt on input line 235.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[4]
+[1{C:/Users/PANKAJA/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+
+{C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./resources/github-mark.png> <./resources/jupyter-icon.png> <./resources/emma_original.jpg> <./resources/emma_transformed.jpg>]
+<resources/whitematter_transformed_image.jpg, id=57, 130.8087pt x 156.8259pt>
+File: resources/whitematter_transformed_image.jpg Graphic file (type jpg)
+<use resources/whitematter_transformed_image.jpg>
+Package pdftex.def Info: resources/whitematter_transformed_image.jpg  used on input line 258.
+(pdftex.def)             Requested size: 91.04742pt x 109.1576pt.
+<resources/Whitematter_transformation_curve.jpg, id=58, 361.35pt x 361.35pt>
+File: resources/Whitematter_transformation_curve.jpg Graphic file (type jpg)
+<use resources/Whitematter_transformation_curve.jpg>
+Package pdftex.def Info: resources/Whitematter_transformation_curve.jpg  used on input line 263.
+(pdftex.def)             Requested size: 118.36096pt x 118.35815pt.
+<resources/transformed_gray_matter.jpg, id=59, 130.8087pt x 156.8259pt>
+File: resources/transformed_gray_matter.jpg Graphic file (type jpg)
+<use resources/transformed_gray_matter.jpg>
+Package pdftex.def Info: resources/transformed_gray_matter.jpg  used on input line 268.
+(pdftex.def)             Requested size: 91.04742pt x 109.1576pt.
+<resources/transformation_curve_gray_matter.jpg, id=60, 361.35pt x 361.35pt>
+File: resources/transformation_curve_gray_matter.jpg Graphic file (type jpg)
+<use resources/transformation_curve_gray_matter.jpg>
+Package pdftex.def Info: resources/transformation_curve_gray_matter.jpg  used on input line 273.
+(pdftex.def)             Requested size: 118.36096pt x 118.35815pt.
+<resources/gamma_original_histogram.png, id=61, 433.62pt x 289.08pt>
+File: resources/gamma_original_histogram.png Graphic file (type png)
+<use resources/gamma_original_histogram.png>
+Package pdftex.def Info: resources/gamma_original_histogram.png  used on input line 305.
+(pdftex.def)             Requested size: 191.20169pt x 127.46907pt.
+<resources/gamma_0.5_histogram.png, id=62, 433.62pt x 289.08pt>
+File: resources/gamma_0.5_histogram.png Graphic file (type png)
+<use resources/gamma_0.5_histogram.png>
+Package pdftex.def Info: resources/gamma_0.5_histogram.png  used on input line 311.
+(pdftex.def)             Requested size: 191.20169pt x 127.46907pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[5]
+[2 <./resources/whitematter_transformed_image.jpg> <./resources/Whitematter_transformation_curve.jpg> <./resources/transformed_gray_matter.jpg> <./resources/transformation_curve_gray_matter.jpg> <./resources/gamma_original_histogram.png> <./resources/gamma_0.5_histogram.png>]
+<resources/spider_hue.png, id=92, 782.925pt x 439.6425pt>
+File: resources/spider_hue.png Graphic file (type png)
+<use resources/spider_hue.png>
+Package pdftex.def Info: resources/spider_hue.png  used on input line 327.
+(pdftex.def)             Requested size: 136.57462pt x 76.69037pt.
+<resources/spider_saturation.png, id=93, 782.925pt x 439.6425pt>
+File: resources/spider_saturation.png Graphic file (type png)
+<use resources/spider_saturation.png>
+Package pdftex.def Info: resources/spider_saturation.png  used on input line 333.
+(pdftex.def)             Requested size: 136.57462pt x 76.69037pt.
+<resources/spider_value.png, id=94, 782.925pt x 439.6425pt>
+File: resources/spider_value.png Graphic file (type png)
+<use resources/spider_value.png>
+Package pdftex.def Info: resources/spider_value.png  used on input line 339.
+(pdftex.def)             Requested size: 136.57462pt x 76.69037pt.
+<resources/spider.png, id=95, 187.902pt x 105.5142pt>
+File: resources/spider.png Graphic file (type png)
+<use resources/spider.png>
+Package pdftex.def Info: resources/spider.png  used on input line 372.
+(pdftex.def)             Requested size: 150.23138pt x 84.36478pt.
+<resources/spider_transformed.png, id=96, 782.925pt x 439.6425pt>
+File: resources/spider_transformed.png Graphic file (type png)
+<use resources/spider_transformed.png>
+Package pdftex.def Info: resources/spider_transformed.png  used on input line 378.
+(pdftex.def)             Requested size: 150.23138pt x 84.35806pt.
+<resources/spider_transformation_graph.png, id=97, 570.2103pt x 423.7431pt>
+File: resources/spider_transformation_graph.png Graphic file (type png)
+<use resources/spider_transformation_graph.png>
+Package pdftex.def Info: resources/spider_transformation_graph.png  used on input line 384.
+(pdftex.def)             Requested size: 136.57462pt x 101.4935pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
 (fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[6] (main.aux)
+[3 <./resources/spider_hue.png (PNG copy)> <./resources/spider_saturation.png (PNG copy)> <./resources/spider_value.png (PNG copy)> <./resources/spider.png> <./resources/spider_transformed.png (PNG copy)> <./resources/spider_transformation_graph.png>]
+<resources/custom_his_eq.png, id=120, 1248.1029pt x 714.7503pt>
+File: resources/custom_his_eq.png Graphic file (type png)
+<use resources/custom_his_eq.png>
+Package pdftex.def Info: resources/custom_his_eq.png  used on input line 433.
+(pdftex.def)             Requested size: 455.24411pt x 260.70174pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[4 <./resources/custom_his_eq.png>]
+<resources/jeniffer_hue.png, id=162, 3854.4pt x 2168.1pt>
+File: resources/jeniffer_hue.png Graphic file (type png)
+<use resources/jeniffer_hue.png>
+Package pdftex.def Info: resources/jeniffer_hue.png  used on input line 445.
+(pdftex.def)             Requested size: 136.57462pt x 76.81755pt.
+<resources/jeniffer_saturation.png, id=163, 3854.4pt x 2168.1pt>
+File: resources/jeniffer_saturation.png Graphic file (type png)
+<use resources/jeniffer_saturation.png>
+Package pdftex.def Info: resources/jeniffer_saturation.png  used on input line 451.
+(pdftex.def)             Requested size: 136.57462pt x 76.81755pt.
+<resources/jeniffer_value.png, id=164, 3854.4pt x 2168.1pt>
+File: resources/jeniffer_value.png Graphic file (type png)
+<use resources/jeniffer_value.png>
+Package pdftex.def Info: resources/jeniffer_value.png  used on input line 457.
+(pdftex.def)             Requested size: 136.57462pt x 76.81755pt.
+<resources/jeniffer_mask_hist.png, id=165, 688.7331pt x 284.0211pt>
+File: resources/jeniffer_mask_hist.png Graphic file (type png)
+<use resources/jeniffer_mask_hist.png>
+Package pdftex.def Info: resources/jeniffer_mask_hist.png  used on input line 475.
+(pdftex.def)             Requested size: 364.19667pt x 150.18808pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[5 <./resources/jeniffer_hue.png (PNG copy)> <./resources/jeniffer_saturation.png (PNG copy)> <./resources/jeniffer_value.png (PNG copy)> <./resources/jeniffer_mask_hist.png>]
+<resources/histogram_equalized_foreground.png, id=193, 1148.3703pt x 346.1733pt>
+File: resources/histogram_equalized_foreground.png Graphic file (type png)
+<use resources/histogram_equalized_foreground.png>
+Package pdftex.def Info: resources/histogram_equalized_foreground.png  used on input line 502.
+(pdftex.def)             Requested size: 432.48051pt x 130.36928pt.
+<resources/sobel_manual.png, id=194, 1022.6205pt x 508.7808pt>
+File: resources/sobel_manual.png Graphic file (type png)
+<use resources/sobel_manual.png>
+Package pdftex.def Info: resources/sobel_manual.png  used on input line 554.
+(pdftex.def)             Requested size: 295.90588pt x 147.22435pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[6 <./resources/histogram_equalized_foreground.png>]
+<resources/q8_taylor.png, id=234, 1076.1003pt x 221.8689pt>
+File: resources/q8_taylor.png Graphic file (type png)
+<use resources/q8_taylor.png>
+Package pdftex.def Info: resources/q8_taylor.png  used on input line 587.
+(pdftex.def)             Requested size: 409.71692pt x 84.47354pt.
+<resources/q8_king.png, id=235, 1076.1003pt x 224.037pt>
+File: resources/q8_king.png Graphic file (type png)
+<use resources/q8_king.png>
+Package pdftex.def Info: resources/q8_king.png  used on input line 594.
+(pdftex.def)             Requested size: 409.71692pt x 85.29903pt.
+<resources/q8_queen.png, id=236, 1076.1003pt x 238.491pt>
+File: resources/q8_queen.png Graphic file (type png)
+<use resources/q8_queen.png>
+Package pdftex.def Info: resources/q8_queen.png  used on input line 601.
+(pdftex.def)             Requested size: 409.71692pt x 90.80219pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[7 <./resources/sobel_manual.png> <./resources/q8_taylor.png> <./resources/q8_king.png> <./resources/q8_queen.png>]
+<resources/q9.png, id=268, 896.8707pt x 714.7503pt>
+File: resources/q9.png Graphic file (type png)
+<use resources/q9.png>
+Package pdftex.def Info: resources/q9.png  used on input line 631.
+(pdftex.def)             Requested size: 364.19667pt x 290.24663pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[8 <./resources/q9.png>] (main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 97BAF3F44BF7CA903AE4036FD6CD579B;5961.
+(rerunfilecheck)             Checksum: 4F6F078B7B894704D20A2292D7F648CE;161.
  ) 
 Here is how much of TeX's memory you used:
- 15524 strings out of 474417
- 240592 string characters out of 5740632
- 2103496 words of memory out of 5000000
- 37567 multiletter control sequences out of 15000+600000
- 577036 words of font info for 78 fonts, out of 8000000 for 9000
+ 15674 strings out of 474417
+ 246643 string characters out of 5740632
+ 2350496 words of memory out of 5000000
+ 37625 multiletter control sequences out of 15000+600000
+ 573706 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,502b,1426s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmb8a.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmr8a.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmro8a.pfb>
-Output written on main.pdf (7 pages, 628894 bytes).
+ 75i,11n,79p,683b,1416s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\PANKAJA\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmb8a.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmr8a.pfb><C:/Users/PANKAJA/AppData/Local/Programs/MiKTeX/fonts/type1/bera/fvmro8a.pfb>
+Output written on main.pdf (8 pages, 12333888 bytes).
 PDF statistics:
- 658 PDF objects out of 1000 (max. 8388607)
- 98 named destinations out of 1000 (max. 500000)
- 288 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 646 PDF objects out of 1000 (max. 8388607)
+ 203 named destinations out of 1000 (max. 500000)
+ 144 words of extra memory for PDF output out of 10000 (max. 10000000)
 
