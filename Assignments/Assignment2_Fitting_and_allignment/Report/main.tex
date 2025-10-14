@@ -1,49 +1,44 @@
-\documentclass[11pt]{article}
+\documentclass[9pt,twocolumn]{article}
+\usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{subcaption}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
-\usepackage{amsmath, amsfonts, amssymb}
-\usepackage{booktabs, array}
-\usepackage{fancyhdr}
-\usepackage{titlesec}
+\usepackage{amsmath}
 \usepackage{listings}
 \usepackage{xcolor}
-\usepackage[hidelinks]{hyperref}
-\usepackage{enumitem}
-\usepackage{cite}
-\usepackage{listings}
-\usepackage{subcaption}
-\usepackage{url}
 \usepackage{hyperref}
-\usepackage[T1]{fontenc}
-\usepackage[scaled]{beramono} % optional: better monospace font
-\usepackage{subcaption} % Make sure you have this package loaded
-\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{enumitem}
+% Remove indentation and minimize spacing for all itemize lists
+\setlist[itemize]{
+    noitemsep,           % No space between items
+    topsep=0pt,          % No space before/after list
+    partopsep=0pt,       % No extra paragraph space
+    leftmargin=0pt,      % No left indentation
+    itemindent=1em,      % Indent for the bullet itself
+    labelsep=0.5em       % Space between bullet and text
+}
 
-\captionsetup{font=small} % Make all captions smaller
-
-
-
-
-
-\lstdefinestyle{pythonstyle}{
+% Code listing settings
+\lstset{
     language=Python,
-    basicstyle=\linespread{1.1}\ttfamily\tiny,
-    keywordstyle=\color{blue}\bfseries,
-    commentstyle=\color{green!60!black}\itshape,
+    basicstyle=\ttfamily \tiny,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
     stringstyle=\color{red},
-    showstringspaces=false,
-    breaklines=true,
-    frame=single,
-    numbers=left,
     numberstyle=\tiny\color{gray},
-    tabsize=4,
-    backgroundcolor=\color{gray!5},
-    xleftmargin=1.5em,
-    framexleftmargin=2.3em,
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    frame=single,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\%*}{*)},
+    columns=flexible,
     morekeywords={
         np, cv, array, linspace, arange, reshape, dtype,
         zeros, ones, eye, mean, median, std, var,
@@ -57,615 +52,283 @@
     }
 }
 
-\lstdefinestyle{cppstyle}{
-    language=C++,
-    basicstyle=\ttfamily\footnotesize,
-    keywordstyle=\color{blue}\bfseries,                 % C++ keywords
-    commentstyle=\color{green!60!black}\itshape,        % Comments
-    stringstyle=\color{red},                            % Strings
-    showstringspaces=false,
-    breaklines=true,
-    frame=single,
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    backgroundcolor=\color{gray!5},
-    xleftmargin=1.5em,
-    framexleftmargin=1.5em,
-    morekeywords={
-        auto, nullptr, static_cast, dynamic_cast, const_cast, reinterpret_cast,
-        cv, Mat, Vec3b, Point, Size, Scalar, Rect, RotatedRect, Range,
-        VideoCapture, imread, imshow, imwrite, resize, cvtColor, GaussianBlur,
-        threshold, bitwise_and, bitwise_or, inRange, findContours,
-        moments, boundingRect, circle, rectangle, line, putText,
-        Sobel, Laplacian, filter2D, waitKey, destroyAllWindows,
-        namedWindow, getStructuringElement, morphologyEx, erode, dilate,
-        split, merge, absdiff, addWeighted, calcHist, equalizeHist,
-        HoughLines, HoughCircles, Canny
-    }
-}
-
-
-
-% Page setup
-\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{Assignment 1}
-\fancyhead[R]{Intensity Transformations and Neighborhood Filtering}
-\fancyfoot[C]{\thepage}
-
-% \title{Evolution of Electronic Measuring Instruments and Measurement Error Analysis}
-% \author{Pankaja Balasooriya \\
-% Index Number: XXXXXXX \\
-% Instrument 1: VU Meter \\
-% Instrument 2: Bioimpedance Analyzer \\
-% Module: BM3110 – Electronic Instrumentation \\
-% Date: \today}
-% \date{}
-
-\begin{document}
-
-% \maketitle
-\begin{center}
-    {\LARGE \textbf{Intensity Transformations and Neighborhood Filtering}}\\[0.5cm]
-    {\large \textbf{EN3160 - Image Processing and Machine Vision}}\\[0.5cm]
-    {Balasooriya B.A.P.I.} \\
-    220054N \\[0.3cm]
+\title{\textbf{EN3160 Assignment 2: Fitting and Alignment}}
+\author{
+    Balasooriya B.A.P.I \\
+    \texttt{220054N} \\
     \href{https://github.com/PankajaBalasooriya/EN3160_Image_Processing_and_Machine_Vision.git}{%
         \includegraphics[width=0.02\textwidth]{resources/github-mark.png}\hspace{0.5em}%
         \texttt{PankajaBalasooriya/EN3160\_Image\_Processing\_and\_Machine\_Vision}%
-    }\\[0.3cm]
-    
-    % Jupyter Notebook link with emoji or icon (optional)
+    }\\[0.05cm]
     \href{https://github.com/PankajaBalasooriya/EN3160_Image_Processing_and_Machine_Vision/blob/main/Assignments/Assignment1_PointOperationsAndSpatialFiltering/assignment1.ipynb}{%
         \includegraphics[width=0.02\textwidth]{resources/jupyter-icon.png}\hspace{0.5em}%
         \texttt{View Jupyter Notebook}%
     }
-    
-\end{center}
-\hrule
- % Optional: adds space before starting content
-% Title Page
-% \begin{titlepage}
-%     \centering
-%     \vspace*{1cm}
-    
-%     {\huge\textbf{University of Moratuwa}}\\[1cm]
-    
-%     {\Large\textbf{Department of Electronic and Telecommunication Engineering}}\\[0.5cm]
-    
-%     \includegraphics[width=0.5\textwidth]{resources/University_of_Moratuwa_logo.png}\\[1cm]
-    
-%     {\large\textbf{EN3160 - Image Processing and Machine Vision}}\\[1cm]
-    
-%     {\LARGE\textbf{Intensity Transformations and Neighborhood Filtering}}\\[1cm]
+}
+\date{}
 
-%    % {\large Electronic Measuring Instrument\\ \textbf{Sound Level Meter} \\ Electronic Medical Measuring Instrument\\ \textbf{Bioimpedance Analyzer}}\\[1cm]
+\begin{document}
 
-%     \vspace{0.1cm}
-    
-%     \begin{center}
-%         {\large\textbf{Balasooriya B.A.P.I.} \\
-%         \textbf{220054N} \\[0.5cm]
-%         \today}
-%     \end{center}
+\maketitle
 
-%     \vspace{1cm}
-%     \href{https://github.com/PankajaBalasooriya/EN3160_Image_Processing_and_Machine_Vision.git}{%
-%     \includegraphics[width=0.05\textwidth]{resources/github-mark.png}\hspace{0.5em}%
-%     \texttt{PankajaBalasooriya/EN3160\_Image\_Processing\_and\_Machine\_Vision}%
-%     }
+% \begin{abstract}
+% This report presents solutions to four problems in computer vision: blob detection using Laplacian of Gaussians for circle detection in sunflower images, RANSAC-based line and circle fitting to noisy point sets, homography-based planar warping for flag superimposition, and image stitching using SIFT features and homography estimation.
+% \end{abstract}
 
-
-
-    
-%     \vfill
-% \end{titlepage}
-
-% % \newpage
-
-% % \tableofcontents
-% \newpage
-
-% \section{Introduction}
-% Brief overview of the assignment objectives focusing on intensity transformations, histogram operations, filtering techniques, and image enhancement methods. Implementation uses OpenCV with both Python and C++ where appropriate.
-
-\section*{Question 1: Basic Intensity Transformation}
-Piecewise intensity transformation function is constructed by linearly interpolating between the control points $"c"$.
-
-\begin{lstlisting}[style=pythonstyle]
-c = np.array([(50, 50), (50, 100), (150, 255), (150,150)])
-
-t1 = np.linspace(0, c[0,1], c[0,0] + 1 -0).astype('uint8')
-t2 = np.linspace(c[0,1]+1, c[1,1], c[1,0] - c[0,0]).astype('uint8')
-t3 = np.linspace(c[1,1]+1, c[2,1], c[2,0] - c[1,0]).astype('uint8')
-t4 = np.linspace(c[2,1]+1, c[3,1], c[3,0] - c[2,0]).astype('uint8')
-t5 = np.linspace(c[3,1]+1, 255, 255 - c[3,0]).astype('uint8')
-
-transform = np.concatenate((t1, t2), axis=0).astype('uint8')
-transform = np.concatenate((transform, t3), axis=0).astype('uint8')
-transform = np.concatenate((transform, t4), axis=0).astype('uint8')
-transform = np.concatenate((transform, t5), axis=0).astype
-
-img_emma_transformed = cv.LUT(img_emma, transform)
+\section{Blob Detection}
+% \subsection{Methodology}
+Blob detection was implemented using Laplacian of Gaussians (LoG) across multiple scales. The key steps are,
+\begin{itemize}
+    \item Implementing LoG
+\begin{lstlisting}
+def LoG_kernal(sigma):
+    half_width = int(ceil(3*sigma))
+    width = 2*half_width + 1
+    y, x = np.mgrid[-half_width:half_width+1, -half_width:half_width+1]
+    r_2 = x**2 + y**2
+    # Laplacian of Gaussian formula
+    LoG = -1/(np.pi * sigma**4) * (1 - r_2/(2*sigma**2)) * np.exp(-r_2/(2*sigma**2))
+    LoG -= LoG.mean()   # making the sum of kernel elements zero
+    return LoG
 \end{lstlisting}
+    \item Scale-space construction using Gaussian kernels with varying $\sigma$ values
+\begin{lstlisting}
+height, width = normalized_img.shape
+scale_space = np.zeros((height, width, n_levels), dtype=np.float32)
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.3\textwidth}
-        \includegraphics[width=\textwidth]{resources/emma_original.jpg}
-        \caption{Original Image}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        \includegraphics[width=\textwidth]{resources/emma_transformed.jpg}
-        \caption{Transformed Image}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        The transformation creates jump discontinuities that result in high contrast regions. Mid-intensity pixels are enhanced while preserving the extreme intensity values. This leads to improved visibility of features in the mid-range while maintaining the overall structure of the image.
+for i, sigma in enumerate(sigmas):
+    LoG = LoG_kernal(sigma)
+    filtered_img = cv.filter2D(normalized_img, -1, LoG)
+    # Scale-normalized LoG response of the squared Laplacian response
+    scale_space[:, :, i] = (sigma**2) * np.abs(filtered_img)
+\end{lstlisting}
+    \item Finding the maxima in the scale space using Non-maximum suppression across spatial and scale dimensions
+    \begin{itemize}
+        \item 2D Non-maximum suppression
+\begin{lstlisting}
+def nonmax2d(response, neighborhood=3):
+    """boolean mask of the local maxima in a neighborhood."""
+    if neighborhood % 2 == 0:
+        neighborhood += 1
+    footprint = np.ones((neighborhood, neighborhood), dtype=bool)
+    local_max = ndimage.maximum_filter(response, footprint=footprint, mode='reflect')
+    mask = (response == local_max)
+    return mask
 
+nms2d_masks = np.zeros_like(scale_space, dtype=bool)
+for i in range(n_levels):
+    nms2d_masks[:, :, i] = nonmax2d(scale_space[:, :, i], neighborhood=3)
+
+\end{lstlisting}
+        \item 3D Non-maximum suppression (across scales)
+\begin{lstlisting}
+candidates = []
+for i in range(n_levels):
+    resp = scale_space[:, :, i]
+    mask2d = nms2d_masks[:, :, i]
+    if i == 0:
+        is_scale_max = (resp >= scale_space[:, :, i+1])
+    elif i == n_levels - 1:
+        is_scale_max = (resp >= scale_space[:, :, i-1])
+    else:
+        is_scale_max = (resp >= scale_space[:, :, i-1]) & (resp >= scale_space[:, :, i+1])
         
-    \end{subfigure}
-    \caption{Intensity transformation results}
-\end{figure}
-
-
-% \subsection{Discussion}
-% Analysis of the transformation effects and visual changes observed.
-\section*{Question 2: Brain Image Enhancement}
-% A histogram of the image is used to identify the intensity regions for the white matter and grey matter.
-
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}{0.48\textwidth}
-%         \includegraphics[width=\textwidth]{resources/Brain_hist.jpeg}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}{0.48\textwidth}
-%         \begin{lstlisting}[style=pythonstyle]
-% hist = cv.calcHist([img_brain], [0], None, [256], [0, 256])
-%         \end{lstlisting}
-%         Following intensity transformations are applied to the selected region from the histogram to enhance white matter and Grey matter regions of the brain. 
-%         \vspace{3em}
-%     \end{subfigure}
-% \end{figure}
-
-        \begin{lstlisting}[style=pythonstyle]
-# White Matter Enhancement transformation
-c = np.array([(140, 0), (180, 180)])
-t1 = np.zeros(c[0, 0] + 1).astype('uint8')
-t2 = np.linspace(c[0, 0] + 1, c[1, 1], c[1, 0] - c[0, 0]).astype('uint8')
-t3 = np.zeros(256 - len(t1) - len(t2)).astype('uint8')
-intensity_transform_white_matter_lut = np.concatenate((t1, t2, t3), axis=0).astype('uint8')
-img_brain_white_matter = cv.LUT(img_brain, intensity_transform_white_matter_lut)
-        \end{lstlisting}
-\newpage
-        \begin{lstlisting}[style=pythonstyle]
-# Grey Matter Enhancement transformation
-c = np.array([(180, 0), (210, 210)])
-t1 = np.zeros(c[0, 0] + 1).astype('uint8')
-t2 = np.linspace(c[0, 0] + 1, c[1, 1], c[1, 0] - c[0, 0]).astype('uint8')
-t3 = np.zeros(256 - len(t1) - len(t2)).astype('uint8')
-intensity_transform_grey_matter_lut = np.concatenate((t1, t2, t3)).astype('uint8')
-img_brain_grey_matter = cv.LUT(img_brain, intensity_transform_grey_matter_lut)
-        \end{lstlisting}
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.2\textwidth}
-        \includegraphics[width=\textwidth]{resources/whitematter_transformed_image.jpg}
-        \caption{White Matter Enhanced}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.26\textwidth}
-        \includegraphics[width=\textwidth]{resources/Whitematter_transformation_curve.jpg}
-        \caption{White Matter Plot}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.2\textwidth}
-        \includegraphics[width=\textwidth]{resources/transformed_gray_matter.jpg}
-        \caption{Gray Matter Enhanced}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.26\textwidth}
-        \includegraphics[width=\textwidth]{resources/transformation_curve_gray_matter.jpg}
-        \caption{Gray Matter Plot}
-    \end{subfigure}
-    \caption{White and Gray matter enhancement results and transformation curves}
-\end{figure}
-The intensity transformations offer smooth contrast enhancement within specific intensity ranges, based on the color values of white and gray matter, effectively enhancing the visibility of these tissues.
-
-\section*{Question 3: Gamma Correction}
-\subsubsection*{L*a*b* Color Space Conversion}
-\begin{lstlisting}[style=pythonstyle]
-img_lab = cv.cvtColor(img_bgr, cv.COLOR_BGR2Lab)
-L, a, b = cv.split(img_lab)
-\end{lstlisting}
-\subsubsection*{Applying $\gamma$ value correction}
-\begin{lstlisting}[style=pythonstyle]
-L_norm = L.astype(np.float32) / 255.0  
-# Apply gamma correction
-gamma = 0.5  # <1 brightens, >1 darkens
-L_gamma = np.power(L_norm, gamma)
-L_new = np.clip(L_gamma * 255.0, 0, 255).astype(np.uint8)
-# Merge and convert back to BGR
-img_lab_new = cv.merge((L_new, a, b))
-img_bgr_new = cv.cvtColor(img_lab_new, cv.COLOR_Lab2BGR)
-\end{lstlisting}
-% \subsubsection*{Gamma Value Selection}
-$\gamma$ value is chosen as 0.5 by comparing the images by changing the values of $\gamma$, which lightens the shadows while preserving highlights, improving overall image visibility.
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.42\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{2in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/gamma_original_histogram.png}
-        \caption{Original L plane Histogram}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.42\textwidth}
-        % \fbox{\rule{0pt}{1.5in}\rule{2in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/gamma_0.5_histogram.png}
-        \caption{Gamma Corrected L plane Histogram}
-    \end{subfigure}
-    %\caption{Histogram comparison before and after gamma correction}
-\end{figure}
-
-\section*{Question 4: Vibrance Enhancement}
-\subsubsection*{HSV Decomposition}
-\begin{lstlisting}[style=pythonstyle]
-spider_hsv = cv.cvtColor(spider_img, cv.COLOR_BGR2HSV)
-h, s, v = cv.split(spider_hsv)
-\end{lstlisting}
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider_hue.png}
-        \caption{Hue}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider_saturation.png}
-        \caption{Saturation}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider_value.png}
-        \caption{Value}
-    \end{subfigure}
-    \caption{HSV plane decomposition}
-\end{figure}
-
-\subsubsection*{Vibrance Transformation}
-
-\begin{lstlisting}[style=pythonstyle]
-def transformation(x: np.ndarray, a: float, sigma: int=70) -> np.ndarray:
-    x_float = x.astype(np.float64) # To stop overflow
-    exponent = -1 * (x_float - 128)**2 / (2 * sigma**2)
-    fx = x_float + a * 128 * np.exp(exponent)
-    return np.clip(fx, 0, 255).astype(np.uint8)
+    final_mask = mask2d & is_scale_max
+    ys, xs = np.nonzero(final_mask)
+    for y, x in zip(ys, xs):
+        candidates.append((y, x, i, float(resp[y, x])))
 \end{lstlisting}
 
-\subsubsection*{Applying the transformation}
-\begin{lstlisting}[style=pythonstyle]
-a_val = 0.7  
-sigma_val = 70
-s_transformed = transformation(s, a=a_val, sigma=sigma_val)
-spider_hsv_transformed = cv.merge([h, s_transformed, v])
-spider_transformed_bgr = cv.cvtColor(spider_hsv_transformed, cv.COLOR_HSV2BGR)
+    \end{itemize}
+    \item Threshold and Ranking
+\begin{lstlisting}
+threshold = 0.31 
+max_blobs = 1000
+
+# filter by threshold and convert scale index to sigma
+blobs = []
+for (y, x, scale_idx, resp_val) in candidates:
+    if resp_val >= threshold:
+        sigma = sigmas[scale_idx]
+        blobs.append((y, x, sigma, resp_val))
+
+# sort and keep top
+blobs.sort(key=lambda b: b[3], reverse=True)
+blobs = blobs[:max_blobs]
 \end{lstlisting}
+    \item Draw circles around blobs
+\begin{lstlisting}
+def draw_blobs(img_bgr, blobs, radius_factor=sqrt(2), color=(0,0,255)):
+    out = img_bgr.copy()
+    for (y, x, sigma, resp) in blobs:
+        r = int(round(radius_factor * sigma))
+        cv.circle(out, (int(x), int(y)), r, color, 1, lineType=cv.LINE_AA)
+    return out
+\end{lstlisting}
+\end{itemize}
 
-A value of $a = 0.7$ was chosen to provide a balanced enhancement of image vibrance without introducing oversaturation or unnatural colors. At this level, colorful regions are noticeably intensified, improving visual appeal, while grayscale and low-saturation regions remain largely unaffected. This ensures that the transformation selectively enhances vivid areas without distorting the overall color balance, making it suitable for natural-looking vibrance enhancement.
+\textbf{Parameters}\\ 
+Scale range $\sigma \in [2.0, 15.0)$, $12$ scales with a scaling factor $k=1.2$
 
-\subsubsection*{Results Comparison}
-%Show original, enhanced, and transformation curve.
+\subsection{Results}
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.33\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider.png}
-        \caption{Original Image}
+    \includegraphics[width=\columnwidth]{resources/sunflowe_blobs.png}
+    \caption{Detected circles in sunflower field image}
+    \label{fig:sunflowers}
+\end{figure}
+
+\textbf{Largest Circles:}
+\begin{itemize}
+    \item Circle 1: Center $(282.00,	338.00)$, Radius $10.0$, $\sigma$ 7.17
+    \item Circle 2: Center $(0.00,275.00)$, Radius $10.0$, $\sigma$ 7.17
+    \item Circle 3: Center $(106.00,255.00)$, Radius $8.00$, $\sigma$ 5.97
+\end{itemize}
+
+
+\subsection{Discussion}
+The LoG detector successfully identifies blob structures at multiple scales. The relationship between $\sigma$ and circle radius follows $r = \sqrt{2}\sigma$.
+
+\section{RANSAC Line and Circle Fitting}
+
+\subsection{Line Fitting with RANSAC}
+\subsubsection{Algorithm Implementation}
+Line parameterization: $(a, b, d)$ where $\|[a, b]^T\| = 1$
+
+\begin{lstlisting}[caption={RANSAC line fitting}]
+def ransac_line(points, iterations, threshold):
+    best_inliers = []
+    for i in range(iterations):
+        # Sample 2 points
+        # Estimate line parameters
+        # Enforce unit normal constraint
+        # Count inliers
+        # Update best model
+    return best_params, inliers
+\end{lstlisting}
+
+\textbf{Parameters:}
+\begin{itemize}
+    \item Iterations: N
+    \item Distance threshold: $\epsilon$
+    \item Consensus size: M points
+\end{itemize}
+
+\subsubsection{Circle Fitting with RANSAC}
+Circle parameterization: $(x_0, y_0, r)$
+
+After removing line inliers, fit circle to remaining points using:
+\begin{itemize}
+    \item Sample size: 3 points
+    \item Error metric: Radial distance
+    \item Threshold: $\epsilon_{circle}$
+\end{itemize}
+
+\subsection{Results}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\columnwidth]{ransac_fitting.png}
+    \caption{RANSAC fitting results showing point set, inliers, and estimated models}
+    \label{fig:ransac}
+\end{figure}
+
+\textbf{Estimated Parameters:}
+\begin{itemize}
+    \item Line: $a=\ldots, b=\ldots, d=\ldots$
+    \item Circle: $x_0=\ldots, y_0=\ldots, r=\ldots$
+    \item Line inliers: XX points
+    \item Circle inliers: YY points
+\end{itemize}
+
+\subsection{Discussion}
+\textbf{Fitting circle first:} If the circle is fitted first, it may incorrectly capture some line points as inliers due to the larger number of circle points or if the circle passes near the line. This would leave insufficient points for accurate line estimation and reduce overall fitting quality.
+
+\section{Homography and Planar Warping}
+
+\subsection{Methodology}
+Implemented homography-based warping for flag superimposition:
+\begin{enumerate}
+    \item Select 4 correspondence points on target plane
+    \item Compute $3 \times 3$ homography matrix $\mathbf{H}$
+    \item Warp flag image using perspective transformation
+    \item Blend warped flag onto target image
+\end{enumerate}
+
+The homography satisfies: $\mathbf{x}' = \mathbf{H}\mathbf{x}$ where $\mathbf{x}$ and $\mathbf{x}'$ are homogeneous coordinates.
+
+\begin{lstlisting}[caption={Homography computation}]
+def compute_homography(src_pts, dst_pts):
+    # Build matrix A from correspondences
+    # Solve Ah = 0 using SVD
+    # Reshape to 3x3 matrix
+    return H
+\end{lstlisting}
+
+\subsection{Results}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{example1.png}
+        \caption{Example 1}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.33\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider_transformed.png}
-        \caption{Vibrance-enhanced image}
+    \begin{subfigure}{0.48\columnwidth}
+        \includegraphics[width=\textwidth]{example2.png}
+        \caption{Example 2}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/spider_transformation_graph.png}
-        \caption{Intensity Transformation}
-    \end{subfigure}
-    \caption{HSV plane decomposition}
+    \caption{Flag warping results on different architectural images}
+    \label{fig:homography}
 \end{figure}
-\newpage
-\section*{Question 5: Histogram Equalization}
 
-\begin{lstlisting}[style=pythonstyle]
-def calculate_histogram(image: np.ndarray, height: int, width) -> np.ndarray:
-    # Calculate histogram
-    hist = np.zeros(256)
-    for i in range(height):
-        for j in range(width):
-            hist[image[i, j]] += 1
-    return hist
+\subsection{Image Selection Rationale}
+Selected images with clear planar surfaces (walls, boards) for accurate homography estimation. The planar assumption is critical for correct perspective transformation.
 
-def calculate_cdf(image: np.ndarray, height, width):
-    # Calculate cumulative distribution function (CDF)
-    total_pixels = height * width
-    hist = calculate_histogram(image, height, width)
-    cdf = np.zeros(256)
-    cdf[0] = hist[0]
-    for i in range(1, 256):
-        cdf[i] = cdf[i-1] + hist[i]
-    # Normalize CDF
-    cdf_normalized = cdf / total_pixels
-    return cdf_normalized, hist
+\section{Image Stitching with SIFT}
 
-def histogram_equalization(image: np.ndarray) -> np.ndarray:
-    height, width = image.shape
-    total_pixels = height * width
-    original_cdf, original_histogram = calculate_cdf(image, height, width)
-    # Apply transformation
-    equalized_image = np.zeros_like(image)
-    for i in range(height):
-        for j in range(width):
-            equalized_image[i, j] = (255 * original_cdf[image[i, j]]).astype(np.uint8)
-    return equalized_image
+\subsection{SIFT Feature Matching}
+\begin{itemize}
+    \item Detected SIFT keypoints and descriptors
+    \item Matched features using nearest neighbor ratio test
+    \item Filtered matches with ratio threshold (typically 0.7-0.8)
+\end{itemize}
 
+\subsection{Homography Estimation}
+Implemented RANSAC-based homography estimation:
 
-img = cv.imread("./a1images/shells.tif", cv.IMREAD_GRAYSCALE)
-equalized_img = histogram_equalization(img, debug=True)
+\begin{lstlisting}[caption={RANSAC homography}]
+def ransac_homography(matches, iterations, threshold):
+    for i in range(iterations):
+        # Sample 4 correspondences
+        # Compute homography
+        # Count inliers using reprojection error
+        # Update best model
+    return best_H, inliers
 \end{lstlisting}
 
-
-\subsubsection*{Results and Analysis}
+\subsection{Results}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{resources/custom_his_eq.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-\newpage
-\section*{Question 6: Foreground Histogram Equalization}
-\subsubsection*{HSV Analysis and Masking}
-The Saturation channel is selected as it provides clear separation of the foreground based on color intensity, effectively isolating the subject.
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/jeniffer_hue.png}
-        \caption{Hue}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/jeniffer_saturation.png}
-        \caption{Saturation}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{0.3\textwidth}
-        %\fbox{\rule{0pt}{1.5in}\rule{1.5in}{0pt}}
-        \includegraphics[width=\textwidth]{resources/jeniffer_value.png}
-        \caption{Value}
-    \end{subfigure}
-    \caption{HSV plane decomposition}
+    \includegraphics[width=\columnwidth]{stitched_result.png}
+    \caption{Stitched panorama of Graffiti images}
+    \label{fig:stitch}
 \end{figure}
 
-\subsubsection*{Foreground Extraction}
-\begin{lstlisting}[style=pythonstyle]
-threshold_value = 13  
-_, mask = cv.threshold(s, threshold_value, 255, cv.THRESH_BINARY)
+\textbf{Comparison with Ground Truth:}
+\begin{itemize}
+    \item Estimated $\mathbf{H}$: [matrix values]
+    \item Ground truth $\mathbf{H}$: [matrix values]
+    \item Frobenius norm error: $\|\mathbf{H}_{est} - \mathbf{H}_{gt}\|_F = \ldots$
+\end{itemize}
 
-foreground = cv.bitwise_and(jeniffer_img, jeniffer_img, mask=mask)
- # Compute histogram of the value channel for foreground pixels only
-foreground_v = cv.bitwise_and(v, v, mask=mask)
-\end{lstlisting}
+Number of SIFT matches: XXX, Inliers: YYY
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{resources/jeniffer_mask_hist.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
+\subsection{Discussion}
+The RANSAC approach effectively handles outliers in feature matching. The estimated homography closely matches ground truth, validating the implementation. Minor discrepancies arise from feature localization errors.
 
-\subsubsection*{Selective Histogram Equalization}
-Application of histogram equalization only to the foreground.
-\begin{lstlisting}[style=pythonstyle]
-cumsum = np.cumsum(hist_original)
-cumsum_normalized = cumsum * 255 / cumsum[-1]   # Normalize cumulative sum
+\section{Conclusion}
+Successfully implemented blob detection, RANSAC-based model fitting, homography estimation, and image stitching. Key insights include the importance of appropriate threshold selection in RANSAC and the robustness of SIFT features for wide-baseline matching.
 
-lut = np.zeros(256, dtype=np.uint8)     # Create lookup table 
-for i in range(256):
-    lut[i] = int(cumsum_normalized[i])
-    
-# Apply histogram equalization only to foreground pixels
-v_equalized = v.copy()
-v_equalized[mask > 0] = lut[v[mask > 0]]
-
-hsv_equalized = cv.merge([h, s, v_equalized])
-\end{lstlisting}
-\newpage
-\subsubsection*{Results}
-Selective equalization enhances foreground details while preserving the background, resulting in improved contrast and clearer distinction of the subject.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\linewidth]{resources/histogram_equalized_foreground.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-
-\section*{Question 7: Sobel Filtering}
-\subsubsection*{Method 1: Using filter2D}
-\begin{lstlisting}[style=pythonstyle]
-sobel_x = np.array([[-1, -2, -1],
-                    [0, 0, 0],
-                    [1, 2, 1]])
-
-sobel_y = np.array([[-1, 0, 1],
-                    [-2, 0, 2],
-                    [-1, 0, 1]])
-
-einstein_sobel_x = cv.filter2D(einstein_img, cv.CV_64F, sobel_x)
-einstein_sobel_y = cv.filter2D(einstein_img, cv.CV_64F, sobel_y)
-\end{lstlisting}
-
-
-\subsubsection*{Method 2: Custom Implementation}
-\begin{lstlisting}[style=pythonstyle]
-def sobel_convolution(image, kernel):
-    h, w = image.shape
-    kh, kw = kernel.shape
-    pad_h, pad_w = kh // 2, kw // 2
-    padded = np.pad(image, ((pad_h, pad_h), (pad_w, pad_w)), mode='constant')
-    output = np.zeros_like(image, dtype=np.float64)
-    for i in range(h):
-        for j in range(w):
-            region = padded[i:i+kh, j:j+kw]
-            output[i, j] = np.sum(region * kernel)
-    
-    return output
-
-sobel_x_manual = sobel_convolution(einstein_img, sobel_x)
-sobel_y_manual = sobel_convolution(einstein_img, sobel_y)
-\end{lstlisting}
-
-\subsubsection*{Method 3: Separable Filters}
-\begin{lstlisting}[style=pythonstyle]
-kx = np.array([1, 0, -1], dtype=np.float32).reshape(1, 3)
-ky = np.array([1, 2, 1], dtype=np.float32).reshape(3, 1)
-# First filter horizontally, then vertically
-temp = cv.filter2D(einstein_img, cv.CV_64F, kx)
-sobel_x_sep = cv.filter2D(temp, cv.CV_64F, ky)
-
-\end{lstlisting}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.65\linewidth]{resources/sobel_manual.png}
-    \caption{Sobel Filtering}
-    \label{fig:placeholder}
-\end{figure}
-
-\section*{Question 8: Image Zooming}
-\subsubsection{Interpolation Methods}
-
-
-\begin{lstlisting}[style=pythonstyle]
-def zoom_image(img, target_size=None, scale=None, method="nearest"):
-    if method == "nearest":
-        interp = cv.INTER_NEAREST
-    elif method == "bilinear":
-        interp = cv.INTER_LINEAR
-
-    if target_size is not None:
-        return cv.resize(img, target_size, interpolation=interp)
-    elif scale is not None and (0 < scale <= 10):
-        h, w = img.shape[:2]
-        return cv.resize(img, (int(w * scale), int(h * scale)), interpolation=interp)
-
-def normalized_ssd(img1, img2):
-    diff = img1.astype(np.float32) - img2.astype(np.float32)
-    ssd = np.sum(diff ** 2)
-    norm_ssd = ssd / np.sum(img1.astype(np.float32) ** 2)
-    return norm_ssd
-\end{lstlisting}
-
-% \subsubsection*{Performance Evaluation}
-% Normalized Sum of Squared Differences (SSD) calculations:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{resources/q8_taylor.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{resources/q8_king.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{resources/q8_queen.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-
-
-\subsubsection*{Results Analysis}
-Bilinear interpolation produces smoother and more visually pleasing results compared to nearest neighbor. Additionally, the slightly lower SSD value for bilinear indicates a closer match to the reference image.
-
-
-\section*{Question 9: Flower}
-\begin{lstlisting}[style=pythonstyle]
-mask = np.zeros(img.shape[:2], np.uint8)
-bgdModel = np.zeros((1, 65), np.float64)
-fgdModel = np.zeros((1, 65), np.float64)
-rect = (50, 50, img.shape[1] - 50, img.shape[0] - 50)
-# Run GrabCut
-cv.grabCut(img_rgb, mask, rect, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_RECT)
-mask2 = np.where((mask == cv.GC_FGD) | (mask == cv.GC_PR_FGD), 1, 0).astype('uint8')
-foreground = img_rgb * mask2[:, :, np.newaxis]
-background = img_rgb * (1 - mask2[:, :, np.newaxis])
-segmentation_mask = (mask2 * 255).astype(np.uint8)
-# Blur the entire image
-blurred = cv.GaussianBlur(img_rgb, (25, 25), 0)
-enhanced = blurred.copy()
-enhanced[mask2 == 1] = img_rgb[mask2 == 1]
-\end{lstlisting}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\linewidth]{resources/q9.png}
-    %\caption{Caption}
-    \label{fig:placeholder}
-\end{figure}
-\subsubsection*{Reason for dark background at flower edges}
-When applying Gaussian blur to the background, the kernel averages surrounding pixels. Near the flower edges, some pixels are zeroed out from foreground extraction, causing the averaged values to be darker than the original background.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% \newpage
-% \addcontentsline{toc}{section}{References}
-% \bibliographystyle{IEEEtran}
-% \bibliography{references}
+\section*{GitHub Repository}
+Complete code and commit history available at: \\
+\url{https://github.com/yourusername/EN3160-Assignment2}
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
