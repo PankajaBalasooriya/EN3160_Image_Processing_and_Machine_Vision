@@ -1,5 +1,5 @@
-\documentclass[9pt,twocolumn]{article}
-\usepackage[margin=0.7in]{geometry}
+\documentclass[9pt]{article}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{listings}
@@ -8,6 +8,7 @@
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{multicol}
 % Remove indentation and minimize spacing for all itemize lists
 \setlist[itemize]{
     noitemsep,           % No space between items
@@ -21,7 +22,7 @@
 % Code listing settings
 \lstset{
     language=Python,
-    basicstyle=\ttfamily \tiny,
+    basicstyle=\ttfamily \scriptsize,
     keywordstyle=\color{blue},
     commentstyle=\color{gray},
     stringstyle=\color{red},
@@ -140,7 +141,9 @@ for i in range(n_levels):
 \end{lstlisting}
 
     \end{itemize}
-    \item Threshold and Ranking
+    \newpage
+    \begin{multicols}{2}
+        \item Threshold and Ranking
 \begin{lstlisting}
 threshold = 0.31 
 max_blobs = 1000
@@ -156,6 +159,7 @@ for (y, x, scale_idx, resp_val) in candidates:
 blobs.sort(key=lambda b: b[3], reverse=True)
 blobs = blobs[:max_blobs]
 \end{lstlisting}
+\newcolumn
     \item Draw circles around blobs
 \begin{lstlisting}
 def draw_blobs(img_bgr, blobs, radius_factor=sqrt(2), color=(0,0,255)):
@@ -165,83 +169,128 @@ def draw_blobs(img_bgr, blobs, radius_factor=sqrt(2), color=(0,0,255)):
         cv.circle(out, (int(x), int(y)), r, color, 1, lineType=cv.LINE_AA)
     return out
 \end{lstlisting}
-\end{itemize}
-
 \textbf{Parameters}\\ 
 Scale range $\sigma \in [2.0, 15.0)$, $12$ scales with a scaling factor $k=1.2$
+    \end{multicols}
+    
+\end{itemize}
+
+
 
 \subsection{Results}
+\begin{multicols}{2}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{resources/sunflowe_blobs.png}
+    \includegraphics[width=0.9\columnwidth]{resources/sunflowe_blobs.png}
     \caption{Detected circles in sunflower field image}
     \label{fig:sunflowers}
 \end{figure}
 
-\textbf{Largest Circles:}
-\begin{itemize}
-    \item Circle 1: Center $(282.00,	338.00)$, Radius $10.0$, $\sigma$ 7.17
-    \item Circle 2: Center $(0.00,275.00)$, Radius $10.0$, $\sigma$ 7.17
-    \item Circle 3: Center $(106.00,255.00)$, Radius $8.00$, $\sigma$ 5.97
-\end{itemize}
+\subsubsection*{Largest Circles:}
+
+Circle 1: Center $(282.00,	338.00)$, Radius $10.0$, $\sigma$ 7.17\\
+Circle 2: Center $(0.00,275.00)$, Radius $10.0$, $\sigma$ 7.17\\
+Circle 3: Center $(106.00,255.00)$, Radius $8.00$, $\sigma$ 5.97
+
 
 
 \subsection{Discussion}
 The LoG detector successfully identifies blob structures at multiple scales. The relationship between $\sigma$ and circle radius follows $r = \sqrt{2}\sigma$.
+\end{multicols}
 
 \section{RANSAC Line and Circle Fitting}
-
+\begin{multicols}{2}
 \subsection{Line Fitting with RANSAC}
-\subsubsection{Algorithm Implementation}
-Line parameterization: $(a, b, d)$ where $\|[a, b]^T\| = 1$
-
 \begin{lstlisting}[caption={RANSAC line fitting}]
-def ransac_line(points, iterations, threshold):
+def ransac_line(points, n_iter=500, thr=1.2, min_inliers=30):
+    N = len(points)
     best_inliers = []
-    for i in range(iterations):
-        # Sample 2 points
-        # Estimate line parameters
-        # Enforce unit normal constraint
-        # Count inliers
-        # Update best model
-    return best_params, inliers
+    best_sample = None
+    best_model = None
+    for i in range(n_iter):
+        idx = np.random.choice(N, 2, replace=False)
+        p1, p2 = points[idx[0]], points[idx[1]]
+        model = fit_line_from_two_points(p1, p2)
+        if model is None:
+            continue
+        a,b,d = model
+        errs = line_point_error(a,b,d,points)
+        inliers = np.where(errs <= thr)[0]
+        if len(inliers) > len(best_inliers):
+            best_inliers = inliers
+            best_sample = idx
+            best_model = model
+            
+    refined = fit_line_tls(points[best_inliers])
 \end{lstlisting}
 
 \textbf{Parameters:}
 \begin{itemize}
-    \item Iterations: N
-    \item Distance threshold: $\epsilon$
-    \item Consensus size: M points
+    \item Iterations: 800
+    \item Distance threshold: 1.2
 \end{itemize}
-
+After removing line inliers, fit circle to remaining points,
+\newcolumn
 \subsubsection{Circle Fitting with RANSAC}
-Circle parameterization: $(x_0, y_0, r)$
 
-After removing line inliers, fit circle to remaining points using:
+\begin{lstlisting}[caption={RANSAC circle fitting}]
+def ransac_circle(points, n_iter=1000, thr=1.0, min_inliers=20):
+    N = len(points)
+    best_inliers = []
+    best_model = None
+    best_sample = None
+    for i in range(n_iter):
+        idx = np.random.choice(N, 3, replace=False)
+        p1, p2, p3 = points[idx[0]], points[idx[1]], points[idx[2]]
+        model = circle_from_3pts(p1, p2, p3)
+        if model is None:
+            continue
+        x0, y0, r0 = model
+        errs = circle_radial_error(x0, y0, r0, points)
+        inliers = np.where(errs <= thr)[0]
+
+        if len(inliers) > len(best_inliers):
+            best_inliers = inliers
+            best_model = (x0, y0, r0)
+            best_sample = idx
+\end{lstlisting}
+
 \begin{itemize}
     \item Sample size: 3 points
     \item Error metric: Radial distance
-    \item Threshold: $\epsilon_{circle}$
+    \item Threshold: 1.0
 \end{itemize}
+\end{multicols}
 
+\begin{multicols}{2}
 \subsection{Results}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\columnwidth]{ransac_fitting.png}
+    \includegraphics[width=\columnwidth]{resources/ransac.png}
     \caption{RANSAC fitting results showing point set, inliers, and estimated models}
     \label{fig:ransac}
 \end{figure}
 
-\textbf{Estimated Parameters:}
-\begin{itemize}
-    \item Line: $a=\ldots, b=\ldots, d=\ldots$
-    \item Circle: $x_0=\ldots, y_0=\ldots, r=\ldots$
-    \item Line inliers: XX points
-    \item Circle inliers: YY points
-\end{itemize}
+\textbf{Estimated Parameters}\\[4pt]
+\textbf{Line:}\\
+Initial model: $a = 0.7246,\; b = 0.6892,\; d = 1.2435$\\
+Refined model: $a = -0.7192,\; b = -0.6948,\; d = -1.3423$\\
+Line inliers: 55 points\\[8pt]
 
-\subsection{Discussion}
-\textbf{Fitting circle first:} If the circle is fitted first, it may incorrectly capture some line points as inliers due to the larger number of circle points or if the circle passes near the line. This would leave insufficient points for accurate line estimation and reduce overall fitting quality.
+\textbf{Circle:}\\
+Initial model: $x_0 = 1.9791,\; y_0 = 3.0529,\; r = 10.1662$\\
+Refined model: $x_0 = 1.9706,\; y_0 = 3.2490,\; r = 10.0412$\\
+Final refined (from mapped inliers): $x_0 = 1.9706,\; y_0 = 3.2490,\; r = 10.0412$\\
+Circle inliers: 36 points\\
+
+
+
+\\
+\textbf{Fitting circle first}\\ If the circle is fitted first, it might accidentally pick 3 points that belong to the line, producing a large-radius circle or a wrong center, because some line points can be consistent with a circle hypothesis, especially if they are near parts of the circle or if there is noise. This can produce a spurious consensus set that includes many line points.
+
+\end{multicols}
+
+
 
 \section{Homography and Planar Warping}
 
@@ -324,11 +373,11 @@ Number of SIFT matches: XXX, Inliers: YYY
 \subsection{Discussion}
 The RANSAC approach effectively handles outliers in feature matching. The estimated homography closely matches ground truth, validating the implementation. Minor discrepancies arise from feature localization errors.
 
-\section{Conclusion}
-Successfully implemented blob detection, RANSAC-based model fitting, homography estimation, and image stitching. Key insights include the importance of appropriate threshold selection in RANSAC and the robustness of SIFT features for wide-baseline matching.
+% \section{Conclusion}
+% Successfully implemented blob detection, RANSAC-based model fitting, homography estimation, and image stitching. Key insights include the importance of appropriate threshold selection in RANSAC and the robustness of SIFT features for wide-baseline matching.
 
-\section*{GitHub Repository}
-Complete code and commit history available at: \\
-\url{https://github.com/yourusername/EN3160-Assignment2}
+% \section*{GitHub Repository}
+% Complete code and commit history available at: \\
+% \url{https://github.com/yourusername/EN3160-Assignment2}
 
 \end{document}
